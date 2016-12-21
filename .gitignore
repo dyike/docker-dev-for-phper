@@ -1,0 +1,12 @@
+.settings
+.buildpath
+.project
+.zfproject.xml
+.htaccess
+.idea/
+.DS_Store
+._*
+code/*
+mysql/data/*
+nginx/error/*
+nginx/conf/default.conf

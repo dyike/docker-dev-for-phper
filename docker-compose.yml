@@ -1,0 +1,27 @@
+nginx:
+  build: ./nginx
+  ports:
+    - "80:80"
+  links:
+    - "php"
+  volumes:
+    - /Users/ityike/Code/:/var/www
+    - /Users/ityike/Docker/nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+    - /Users/ityike/Docker/nginx/error/error.log:/var/log/nginx/error.log
+
+php:
+  build: ./php
+  ports:
+    - "9000:9000"
+  volumes:
+    - /Users/ityike/Code/:/var/www
+  links:
+    - "mysql"
+mysql:
+  build: ./mysql
+  ports:
+    - "3306:3306"
+  volumes:
+    - /Users/ityike/Docker/mysql/data/:/var/lib/mysql/
+  environment:
+    MYSQL_ROOT_PASSWORD : 123456
