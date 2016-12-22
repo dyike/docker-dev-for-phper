@@ -23,14 +23,14 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libreadline6 \
     libreadline6-dev \
-
+    && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install -j$(nproc) iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-mcrypt=/usr/include \
     && docker-php-ext-install gd \
 
-# no dependency extension
-
-    && docker-php-ext-install pdo_mysql sockets gettext opcache\
+    && docker-php-ext-install sockets \
+    && docker-php-ext-install gettext \
+    && docker-php-ext-install opcache\
 
 # Install PECL extensions
 
