@@ -34,16 +34,12 @@ RUN apt-get update && apt-get install -y \
 # Install PECL extensions
 
 RUN apt-get install -y \
-# for memcache
-    libmemcache-dev \
 
 # for memcached
     libmemcached-dev \
 
-    && pecl install memcache && docker-php-ext-enable memcache \
-    && pecl install memcached && docker-php-ext-enable memcached \
-    && pecl install gearman && docker-php-ext-enable gearman \
-    && pecl install yaf && docker-php-ext-enable yaf \
+#    && pecl install gearman && docker-php-ext-enable gearman \
+#    && pecl install yaf && docker-php-ext-enable yaf \
 
     && pecl install xdebug && docker-php-ext-enable xdebug \
     && pecl install redis && docker-php-ext-enable redis \
