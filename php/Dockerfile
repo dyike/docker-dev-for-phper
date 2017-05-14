@@ -29,7 +29,10 @@ RUN apt-get update && apt-get install -y \
 
 # no dependency extension
 
-    && docker-php-ext-install pdo_mysql sockets gettext opcache\
+    && docker-php-ext-install pdo_mysql \
+    && docker-php-ext-install sockets \
+    && docker-php-ext-install gettext \
+    && docker-php-ext-install opcache \
 
 # Install PECL extensions
 
