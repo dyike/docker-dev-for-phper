@@ -1,4 +1,4 @@
-FROM  php:7.1.4-fpm
+FROM  php:7.1.8-fpm
 
 MAINTAINER ityike<yuanfeng634@gmail.com>
 
@@ -32,6 +32,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pdo_mysql \
     && docker-php-ext-install sockets \
     && docker-php-ext-install gettext \
+    && docker-php-ext-install mcrypt \
     && docker-php-ext-install opcache \
 
 # Install PECL extensions
@@ -66,6 +67,9 @@ RUN apt-get install -y \
 #     && rm -r xcache \
 #     && docker-php-ext-enable xcache
 
+# install swoole
+RUN pecl install swoole
+RUN docker-php-ext-enable swoole
 
 # open pid file
 # RUN sed -i '/^;pid\s*=\s*/s/\;//g' /usr/local/etc/php-fpm.d/www.conf \
